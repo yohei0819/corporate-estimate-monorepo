@@ -1,0 +1,1 @@
+const i=[{id:"svc-1",title:"IT導入診断",description:"IT導入の最適プランを診断します。"},{id:"svc-2",title:"コスト最適化",description:"コスト削減の提案を行います。"},{id:"svc-3",title:"セキュリティ監査",description:"セキュリティの現状を監査します。"}],t={title:"無料診断を始めましょう",description:"簡単な質問に答えるだけで、最適なプランをご提案します。",buttonLabel:"無料で診断する",href:"/diagnosis"};export{t as M,i as a};
