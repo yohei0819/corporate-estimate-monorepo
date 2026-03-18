@@ -7,6 +7,11 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: {
     preset: 'github-pages',
+    prerender: {
+      // 診断アプリへのリンクはプリレンダ対象外
+      ignore: ['/corporate-estimate-monorepo/app'],
+      failOnError: false,
+    },
   },
   app: {
     baseURL: '/corporate-estimate-monorepo/',
