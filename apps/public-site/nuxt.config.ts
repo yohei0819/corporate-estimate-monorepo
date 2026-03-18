@@ -15,6 +15,11 @@ export default defineNuxtConfig({
   },
   app: {
     baseURL: '/corporate-estimate-monorepo/',
+    head: {
+      meta: [
+        { name: 'robots', content: 'noindex, nofollow' },
+      ],
+    },
   },
 
   css: ['~/assets/scss/global.scss'],

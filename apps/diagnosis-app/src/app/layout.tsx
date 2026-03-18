@@ -9,6 +9,7 @@ import './globals.scss';
 export const metadata: Metadata = {
   title: 'Corporate Estimate - Diagnosis',
   description: '法人見積もり診断アプリ',
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({
