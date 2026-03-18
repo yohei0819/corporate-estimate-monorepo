@@ -1,0 +1,42 @@
+@use '../styles/variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  color: $color-text;
+  background-color: $color-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 印刷時にヘッダー・フッター・スクロールボタンを非表示 */
+@media print {
+  header,
+  footer,
+  [aria-label='ページトップへ戻る'] {
+    display: none !important;
+  }
+
+  main {
+    padding-top: 0 !important;
+  }
+}

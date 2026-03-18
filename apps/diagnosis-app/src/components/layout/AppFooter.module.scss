@@ -1,0 +1,37 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background-color: $color-bg-light;
+  border-top: 1px solid $color-border;
+  padding: $spacing-xl 0;
+
+  &__inner {
+    @include container;
+    text-align: center;
+  }
+
+  &__nav-list {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-lg;
+    list-style: none;
+    margin-bottom: $spacing-md;
+  }
+
+  &__nav-link {
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    text-decoration: none;
+    transition: color $transition-base;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__copyright {
+    font-size: $font-size-xs;
+    color: $color-text-light;
+  }
+}

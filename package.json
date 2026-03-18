@@ -1,0 +1,43 @@
+{
+  "name": "corporate-estimate-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev:public-site & npm run dev:diagnosis-app",
+    "dev:public-site": "npm run dev -w @corporate-estimate/public-site",
+    "dev:diagnosis-app": "npm run dev -w @corporate-estimate/diagnosis-app",
+    "build:shared": "npm run build -w @corporate-estimate/shared",
+    "build:public-site": "npm run build -w @corporate-estimate/public-site",
+    "build:diagnosis-app": "npm run build -w @corporate-estimate/diagnosis-app",
+    "build": "npm run build:shared && npm run build:public-site && npm run build:diagnosis-app",
+    "lint": "eslint . --ext .ts,.tsx,.js,.mjs",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.mjs --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,mjs,json,scss,css,md,vue}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,mjs,json,scss,css,md,vue}\"",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "private": "true",
+  "workspaces": [
+    "apps/public-site",
+    "apps/diagnosis-app",
+    "packages/shared"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.57.1",
+    "@typescript-eslint/parser": "^8.57.1",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.4.0",
+    "prettier": "^3.8.1",
+    "vitest": "^4.1.0"
+  },
+  "dependencies": {
+    "@next/swc-darwin-x64": "^16.1.7"
+  }
+}

@@ -1,0 +1,62 @@
+import type { ServiceItem } from '../types/company';
+
+/** サービス詳細 */
+export interface ServiceDetail extends ServiceItem {
+  features: string[];
+  targetAudience: string;
+}
+
+export const MOCK_SERVICE_DETAILS: ServiceDetail[] = [
+  {
+    id: 'svc-1',
+    title: 'IT導入診断',
+    description:
+      '企業のIT環境を多角的に分析し、課題を「見える化」するサービスです。現状のシステム構成やワークフローをヒアリングし、最適なIT導入プランをご提案します。',
+    features: [
+      '現状のIT資産の棚卸しと評価',
+      'ワークフロー分析による業務効率化ポイントの特定',
+      '導入優先度付きのロードマップ作成',
+      'コスト試算と投資対効果の明示',
+    ],
+    targetAudience: 'IT環境の見直しや新規導入を検討中の企業',
+  },
+  {
+    id: 'svc-2',
+    title: 'コスト最適化コンサルティング',
+    description:
+      '現在のIT関連支出を精査し、無駄なコストを削減しながらパフォーマンスを維持・向上させるプランをご提案します。',
+    features: [
+      '契約・ライセンスの棚卸しと適正化',
+      'クラウド利用料金の最適化',
+      'ベンダー統合による管理コスト削減',
+      '段階的なコスト削減ロードマップの策定',
+    ],
+    targetAudience: 'ITコストの削減・適正化を目指す企業',
+  },
+  {
+    id: 'svc-3',
+    title: 'セキュリティ監査',
+    description:
+      '外部脅威と内部統制の両面からセキュリティリスクを評価し、具体的な改善策を提示します。ISMS認証取得の支援も可能です。',
+    features: [
+      '脆弱性スキャンとペネトレーションテスト',
+      '内部統制・アクセス権限の監査',
+      'リスク評価レポートの作成',
+      'ISMS / Pマーク取得支援',
+    ],
+    targetAudience: 'セキュリティ強化や認証取得を検討中の企業',
+  },
+  {
+    id: 'svc-4',
+    title: 'DX推進支援',
+    description:
+      '全社的なデジタルトランスフォーメーション戦略の策定から、現場での実行支援まで伴走型でサポートします。',
+    features: [
+      '経営層・現場の課題ヒアリング',
+      'DX推進ロードマップの策定',
+      'PoC（概念実証）の計画と実施',
+      'SaaS・ツール選定と導入支援',
+    ],
+    targetAudience: '本格的にDXに取り組みたい企業',
+  },
+];

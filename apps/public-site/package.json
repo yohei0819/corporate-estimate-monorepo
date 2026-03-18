@@ -1,0 +1,21 @@
+{
+  "name": "@corporate-estimate/public-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@corporate-estimate/shared": "*",
+    "nuxt": "^3.16.0",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.86.0",
+    "typescript": "^5.7.0"
+  }
+}

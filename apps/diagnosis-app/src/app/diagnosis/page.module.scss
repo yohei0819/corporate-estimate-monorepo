@@ -1,0 +1,23 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.diagnosis {
+  padding: $spacing-xl 0;
+  min-height: calc(100vh - #{$header-height});
+  background-color: $color-bg-light;
+
+  @include respond-to(md) {
+    padding: $spacing-3xl 0;
+  }
+
+  &__inner {
+    @include container;
+    max-width: 720px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+  }
+}

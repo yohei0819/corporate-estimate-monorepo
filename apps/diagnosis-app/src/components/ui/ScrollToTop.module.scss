@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+
+.scrollToTop {
+  position: fixed;
+  bottom: $spacing-xl;
+  right: $spacing-xl;
+  width: 48px;
+  height: 48px;
+  border-radius: $border-radius-full;
+  background-color: $color-primary;
+  color: $color-white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-md;
+  transition: background-color $transition-base, opacity 0.3s, transform 0.3s;
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}

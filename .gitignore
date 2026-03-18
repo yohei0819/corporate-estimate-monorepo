@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.output/
+.next/
+.nuxt/
+
+# 環境変数（.env.example はコミット対象）
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo

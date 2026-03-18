@@ -1,0 +1,92 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.mypage {
+  padding: $spacing-xl 0;
+
+  @include respond-to(md) {
+    padding: $spacing-3xl 0;
+  }
+
+  &__inner {
+    @include container;
+    max-width: 800px;
+  }
+
+  &__loading {
+    text-align: center;
+    padding: $spacing-3xl 0;
+    color: $color-text-light;
+    font-size: $font-size-base;
+  }
+
+  &__section {
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__section-title {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__card-title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  &__user-info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    font-size: $font-size-base;
+    color: $color-text;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-2xl;
+    color: $color-text-light;
+    font-size: $font-size-base;
+  }
+
+  &__result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  &__result-date {
+    font-size: $font-size-sm;
+    color: $color-text-light;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__result-plan {
+    font-size: $font-size-base;
+    font-weight: 600;
+    color: $color-text;
+  }
+
+  &__result-cost {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $color-primary;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+  }
+}

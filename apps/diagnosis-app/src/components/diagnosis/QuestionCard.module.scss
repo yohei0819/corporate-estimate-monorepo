@@ -1,0 +1,55 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.question-card {
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: $spacing-xl;
+    text-align: center;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @include respond-to(md) {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  &__option {
+    display: block;
+    width: 100%;
+    padding: $spacing-lg;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    color: $color-text;
+    background-color: $color-bg-light;
+    border: 2px solid $color-border;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: border-color $transition-base, background-color $transition-base;
+    text-align: center;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--selected {
+      border-color: $color-primary;
+      background-color: rgba(26, 115, 232, 0.05);
+      color: $color-primary;
+      font-weight: 600;
+    }
+  }
+}
