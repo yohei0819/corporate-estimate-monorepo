@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      diagnosisAppOrigin: 'http://localhost:3001',
+      diagnosisAppOrigin: '/corporate-estimate-monorepo/app',
       gaId: '',
     },
   },

@@ -7,7 +7,7 @@ import styles from './AppHeader.module.scss';
 
 const PUBLIC_SITE_ORIGIN =
   process.env.NEXT_PUBLIC_PUBLIC_SITE_ORIGIN
-  || (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '');
+  || (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '/corporate-estimate-monorepo');
 
 export function AppHeader() {
   const [menuOpen, setMenuOpen] = useState(false);

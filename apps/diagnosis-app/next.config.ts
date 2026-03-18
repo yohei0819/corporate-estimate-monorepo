@@ -2,6 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  // GitHub Pages 用の静的エクスポート
+  output: 'export',
+  basePath: '/corporate-estimate-monorepo/app',
   sassOptions: {
     silenceDeprecations: ['legacy-js-api'],
   },
