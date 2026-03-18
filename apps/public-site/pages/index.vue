@@ -13,7 +13,7 @@
           500社以上の導入実績をもとに、コスト最適化からセキュリティ強化まで対応します。
         </p>
         <div class="page-index__hero-actions">
-          <UiBaseButton variant="primary" size="lg" :href="diagnosisUrl">
+          <UiBaseButton variant="primary" size="lg" :href="diagnosisUrl" external>
             無料で診断する
           </UiBaseButton>
           <UiBaseButton variant="outline" size="lg" href="/services">

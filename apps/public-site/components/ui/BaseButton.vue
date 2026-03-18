@@ -1,6 +1,6 @@
 <template>
   <a
-    v-if="href && isExternal"
+    v-if="href && isExternalUrl"
     :href="href"
     :class="classes"
     target="_blank"
@@ -12,6 +12,7 @@
     v-else-if="href"
     :to="href"
     :class="classes"
+    :external="external"
   >
     <slot />
   </NuxtLink>
@@ -35,14 +36,17 @@ const props = withDefaults(defineProps<{
   /** @deprecated Use href prop instead – tag is kept for backward compatibility */
   tag?: 'button' | 'a';
   disabled?: boolean;
+  /** Nuxt ルーター外への遷移（クライアントサイドルーティングをスキップ） */
+  external?: boolean;
 }>(), {
   variant: 'primary',
   size: 'md',
   tag: 'button',
   disabled: false,
+  external: false,
 });
 
-const isExternal = computed(() =>
+const isExternalUrl = computed(() =>
   props.href?.startsWith('http://') || props.href?.startsWith('https://'),
 );
 

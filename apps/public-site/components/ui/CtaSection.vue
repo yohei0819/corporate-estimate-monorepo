@@ -7,6 +7,7 @@
         variant="primary"
         size="lg"
         :href="resolvedHref"
+        :external="isDiagnosisLink"
       >
         {{ buttonLabel }}
       </UiBaseButton>
@@ -23,8 +24,9 @@ const props = defineProps<{
 }>();
 
 const config = useRuntimeConfig();
+const isDiagnosisLink = computed(() => props.href === '/diagnosis');
 const resolvedHref = computed(() =>
-  props.href === '/diagnosis'
+  isDiagnosisLink.value
     ? `${config.public.diagnosisAppOrigin}/diagnosis`
     : props.href,
 );
