@@ -24,10 +24,11 @@ const props = defineProps<{
 }>();
 
 const config = useRuntimeConfig();
+const baseURL = (config.app?.baseURL || '/').replace(/\/$/, '');
 const isDiagnosisLink = computed(() => props.href === '/diagnosis');
 const resolvedHref = computed(() =>
   isDiagnosisLink.value
-    ? `${config.public.diagnosisAppOrigin}/diagnosis`
+    ? `${baseURL}${config.public.diagnosisAppOrigin}/diagnosis`
     : props.href,
 );
 </script>

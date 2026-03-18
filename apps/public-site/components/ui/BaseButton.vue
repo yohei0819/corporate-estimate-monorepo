@@ -8,11 +8,17 @@
   >
     <slot />
   </a>
+  <a
+    v-else-if="href && external"
+    :href="href"
+    :class="classes"
+  >
+    <slot />
+  </a>
   <NuxtLink
     v-else-if="href"
     :to="href"
     :class="classes"
-    :external="external"
   >
     <slot />
   </NuxtLink>

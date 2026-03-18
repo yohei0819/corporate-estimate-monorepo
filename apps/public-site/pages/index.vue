@@ -88,8 +88,9 @@ useSeoMeta({
 });
 
 const services = MOCK_SERVICES;
-const cta = { ...MOCK_CTA, href: `${config.public.diagnosisAppOrigin}/diagnosis` };
-const diagnosisUrl = `${config.public.diagnosisAppOrigin}/diagnosis`;
+const baseURL = (config.app?.baseURL || '/').replace(/\/$/, '');
+const cta = MOCK_CTA;
+const diagnosisUrl = `${baseURL}${config.public.diagnosisAppOrigin}/diagnosis`;
 const featuredWorks = MOCK_WORKS.slice(0, 3);
 </script>
 
