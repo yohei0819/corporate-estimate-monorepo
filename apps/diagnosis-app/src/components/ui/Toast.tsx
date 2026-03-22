@@ -19,6 +19,15 @@ const TOAST_DURATION_MS = 3000;
 
 const ToastContext = createContext<ToastContextValue | null>(null);
 
+/**
+ * トースト通知を表示するためのフック。ToastProvider 配下で使用する。
+ *
+ * @example
+ * ```tsx
+ * const { showToast } = useToast();
+ * showToast('保存しました', 'success');
+ * ```
+ */
 export function useToast(): ToastContextValue {
   const ctx = useContext(ToastContext);
   if (!ctx) throw new Error('useToast must be used within ToastProvider');
@@ -31,6 +40,10 @@ const ICON_MAP: Record<ToastType, string> = {
   info: 'ℹ',
 };
 
+/**
+ * トースト通知のコンテキストプロバイダ。
+ * アプリケーションのルート近くに配置し、子コンポーネントから `useToast()` で利用する。
+ */
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const nextIdRef = useRef(0);

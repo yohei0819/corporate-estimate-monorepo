@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { SITE_NAME, DIAGNOSIS_HEADER_NAV_ITEMS } from '@corporate-estimate/shared';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import styles from './AppHeader.module.scss';
 
 const PUBLIC_SITE_ORIGIN =
@@ -44,6 +45,7 @@ export function AppHeader() {
             ))}
           </ul>
         </nav>
+        <ThemeToggle />
       </div>
     </header>
   );

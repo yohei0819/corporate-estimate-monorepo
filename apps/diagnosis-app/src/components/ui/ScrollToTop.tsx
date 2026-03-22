@@ -3,6 +3,10 @@
 import { useState, useEffect } from 'react';
 import styles from './ScrollToTop.module.scss';
 
+/**
+ * ページトップへのスクロールボタン。
+ * 300px 以上スクロールすると表示され、クリックでスムーズにトップへ戻る。
+ */
 export function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 

@@ -18,6 +18,7 @@
           </li>
         </ul>
       </nav>
+      <UiThemeToggle />
     </div>
   </header>
 </template>

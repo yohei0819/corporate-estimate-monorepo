@@ -1,41 +1,54 @@
 // CSS Custom Properties — ライトモード / ダークモード切り替え
-// 両アプリ (diagnosis-app / public-site) で同一の値を使用
+// 同期先: apps/public-site/assets/scss/_dark-mode.scss
 // 変更する場合は両方を同時に更新すること
+//
+// 手動切り替え: data-theme="light" / "dark" を <html> に設定
+// 未設定時は prefers-color-scheme に追従
+
+@mixin dark-colors {
+  --color-primary: #8ab4f8;
+  --color-primary-dark: #669df6;
+  --color-text: #e8eaed;
+  --color-text-light: #bdc1c6;
+  --color-bg: #202124;
+  --color-bg-light: #292a2d;
+  --color-border: #5f6368;
+  --color-white: #303134;
+  --color-danger: #f5a19a;
+  --color-danger-bg: rgba(245, 161, 154, 0.12);
+  --color-success: #81c995;
+  --color-primary-selected: rgba(138, 180, 248, 0.1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
 
 :root {
-  --color-primary: #1a73e8;
-  --color-primary-dark: #1557b0;
+  --color-primary: #0b52a1;
+  --color-primary-dark: #093d7a;
   --color-text: #202124;
-  --color-text-light: #5f6368;
+  --color-text-light: #46494d;
   --color-bg: #ffffff;
   --color-bg-light: #f8f9fa;
   --color-border: #dadce0;
   --color-white: #ffffff;
-  --color-danger: #d93025;
-  --color-danger-bg: rgba(217, 48, 37, 0.08);
-  --color-success: #1e8e3e;
-  --color-primary-selected: rgba(26, 115, 232, 0.05);
+  --color-danger: #9e2118;
+  --color-danger-bg: rgba(158, 33, 24, 0.08);
+  --color-success: #0f5c25;
+  --color-primary-selected: rgba(11, 82, 161, 0.05);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
+// システム設定がダーク & 手動でライト未選択 → ダーク適用
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: #8ab4f8;
-    --color-primary-dark: #669df6;
-    --color-text: #e8eaed;
-    --color-text-light: #bdc1c6;
-    --color-bg: #202124;
-    --color-bg-light: #292a2d;
-    --color-border: #5f6368;
-    --color-white: #303134;
-    --color-danger: #f28b82;
-    --color-danger-bg: rgba(242, 139, 130, 0.12);
-    --color-success: #81c995;
-    --color-primary-selected: rgba(138, 180, 248, 0.1);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  :root:not([data-theme='light']) {
+    @include dark-colors;
   }
+}
+
+// 手動でダーク選択 → 常にダーク適用
+:root[data-theme='dark'] {
+  @include dark-colors;
 }

@@ -1,12 +1,30 @@
 import styles from './QuestionCard.module.scss';
 
 interface QuestionCardProps {
+  /** 質問文 */
   question: string;
+  /** 選択肢の配列 */
   options: { value: string; label: string }[];
+  /** 現在選択中の値 */
   selectedValue: string;
+  /** 選択肢クリック時のコールバック */
   onSelect: (value: string) => void;
 }
 
+/**
+ * 診断フローの 1 ステップ分の質問カード。
+ * 質問文と選択肢ボタン群を描画し、選択状態を触覚的にフィードバックする。
+ *
+ * @example
+ * ```tsx
+ * <QuestionCard
+ *   question="どのようなサイトを制作しますか？"
+ *   options={[{ value: 'corporate', label: 'コーポレートサイト' }]}
+ *   selectedValue="corporate"
+ *   onSelect={(v) => setAnswer(v)}
+ * />
+ * ```
+ */
 export function QuestionCard({
   question,
   options,
