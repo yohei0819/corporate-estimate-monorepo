@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { isValidEmail } from '@corporate-estimate/shared';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Button } from '@/components/ui/Button';
+import { STORAGE_KEYS } from '@/lib/storage';
+import { useToast } from '@/components/ui/Toast';
 import styles from './page.module.scss';
 
 /** モックユーザー情報 */
@@ -18,6 +20,7 @@ const MOCK_USER = {
 
 export default function LoginPage() {
   const router = useRouter();
+  const { showToast } = useToast();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -43,9 +46,10 @@ export default function LoginPage() {
 
       if (email === MOCK_USER.email && password === MOCK_USER.password) {
         localStorage.setItem(
-          'auth',
+          STORAGE_KEYS.auth,
           JSON.stringify({ email: MOCK_USER.email, name: MOCK_USER.name, company: MOCK_USER.company }),
         );
+        showToast('ログインしました');
         router.push('/mypage');
       } else {
         setError('メールアドレスまたはパスワードが正しくありません。');

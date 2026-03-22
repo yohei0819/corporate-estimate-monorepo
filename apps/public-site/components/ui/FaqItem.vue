@@ -19,7 +19,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 .faq-item {
-  border: 1px solid $color-border;
+  border: 1px solid var(--color-border);
   border-radius: $border-radius-md;
   overflow: hidden;
 
@@ -35,13 +35,13 @@ defineProps<{
     padding: $spacing-lg;
     font-size: $font-size-base;
     font-weight: 600;
-    color: $color-text;
+    color: var(--color-text);
     cursor: pointer;
     list-style: none;
     transition: background-color $transition-base;
 
     &:hover {
-      background-color: $color-bg-light;
+      background-color: var(--color-bg-light);
     }
 
     &::-webkit-details-marker {
@@ -63,7 +63,7 @@ defineProps<{
     &::after {
       content: '';
       position: absolute;
-      background-color: $color-secondary;
+      background-color: var(--color-text-light);
       transition: transform $transition-base;
     }
 
@@ -91,7 +91,7 @@ defineProps<{
   &__answer {
     padding: 0 $spacing-lg $spacing-lg;
     font-size: $font-size-base;
-    color: $color-text-light;
+    color: var(--color-text-light);
     line-height: 1.8;
   }
 }

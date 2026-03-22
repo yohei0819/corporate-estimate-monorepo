@@ -24,8 +24,8 @@ const navItems = FOOTER_NAV_ITEMS;
 
 <style lang="scss" scoped>
 .footer {
-  background-color: $color-bg-light;
-  border-top: 1px solid $color-border;
+  background-color: var(--color-bg-light);
+  border-top: 1px solid var(--color-border);
   padding: $spacing-xl 0;
 
   &__inner {
@@ -43,18 +43,18 @@ const navItems = FOOTER_NAV_ITEMS;
 
   &__nav-link {
     font-size: $font-size-sm;
-    color: $color-text-light;
+    color: var(--color-text-light);
     text-decoration: none;
     transition: color $transition-base;
 
     &:hover {
-      color: $color-primary;
+      color: var(--color-primary);
     }
   }
 
   &__copyright {
     font-size: $font-size-xs;
-    color: $color-text-light;
+    color: var(--color-text-light);
   }
 }
 </style>

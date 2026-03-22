@@ -4,7 +4,7 @@
 .diagnosis {
   padding: $spacing-xl 0;
   min-height: calc(100vh - #{$header-height});
-  background-color: $color-bg-light;
+  background-color: var(--color-bg-light);
 
   @include respond-to(md) {
     padding: $spacing-3xl 0;

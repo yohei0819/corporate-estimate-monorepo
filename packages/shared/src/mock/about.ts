@@ -1,17 +1,4 @@
-import type { CompanyInfo } from '../types/company';
-
-/** 会社沿革 */
-export interface CompanyHistory {
-  year: string;
-  description: string;
-}
-
-/** 会社の強み */
-export interface CompanyStrength {
-  id: string;
-  title: string;
-  description: string;
-}
+import type { CompanyInfo, CompanyHistory, CompanyStrength } from '../types/company';
 
 export const MOCK_COMPANY_DETAIL: CompanyInfo = {
   name: 'Corporate Estimate株式会社',

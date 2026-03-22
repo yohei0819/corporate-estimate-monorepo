@@ -15,7 +15,7 @@
   &__subtitle {
     display: block;
     font-size: $font-size-sm;
-    color: $color-primary;
+    color: var(--color-primary);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -26,7 +26,7 @@
     display: block;
     font-size: $font-size-2xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
 
     @include respond-to(md) {
       font-size: $font-size-3xl;

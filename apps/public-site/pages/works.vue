@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { MOCK_WORKS, MOCK_CTA } from '@corporate-estimate/shared';
+import { MOCK_WORKS, MOCK_CTA, WORK_CATEGORY_LABELS } from '@corporate-estimate/shared';
 import type { WorkCategory } from '@corporate-estimate/shared';
 
 useSeoMeta({
@@ -49,15 +49,8 @@ useSeoMeta({
 const works = MOCK_WORKS;
 const cta = MOCK_CTA;
 
-const CATEGORY_LABELS: Record<WorkCategory, string> = {
-  it: 'IT導入',
-  security: 'セキュリティ',
-  cost: 'コスト最適化',
-  consulting: 'コンサルティング',
-};
-
 function categoryLabel(category: WorkCategory): string {
-  return CATEGORY_LABELS[category];
+  return WORK_CATEGORY_LABELS[category];
 }
 </script>
 
@@ -97,26 +90,26 @@ function categoryLabel(category: WorkCategory): string {
     padding: $spacing-xs $spacing-sm;
     font-size: $font-size-xs;
     font-weight: 600;
-    color: $color-white;
-    background-color: $color-primary;
+    color: #ffffff;
+    background-color: var(--color-primary);
     border-radius: $border-radius-sm;
   }
 
   &__card-industry {
     font-size: $font-size-xs;
-    color: $color-text-light;
+    color: var(--color-text-light);
   }
 
   &__card-title {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-sm;
   }
 
   &__card-desc {
     font-size: $font-size-sm;
-    color: $color-text-light;
+    color: var(--color-text-light);
     line-height: 1.7;
     margin-bottom: $spacing-lg;
   }
@@ -126,18 +119,18 @@ function categoryLabel(category: WorkCategory): string {
     justify-content: space-between;
     align-items: center;
     padding-top: $spacing-md;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid var(--color-border);
   }
 
   &__card-client {
     font-size: $font-size-sm;
     font-weight: 600;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__card-period {
     font-size: $font-size-xs;
-    color: $color-text-light;
+    color: var(--color-text-light);
   }
 }
 </style>

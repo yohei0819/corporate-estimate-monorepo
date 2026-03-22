@@ -29,3 +29,22 @@ export interface CtaInfo {
   buttonLabel: string;
   href: string;
 }
+
+/** 会社沿革 */
+export interface CompanyHistory {
+  year: string;
+  description: string;
+}
+
+/** 会社の強み */
+export interface CompanyStrength {
+  id: string;
+  title: string;
+  description: string;
+}
+
+/** サービス詳細 */
+export interface ServiceDetail extends ServiceItem {
+  features: string[];
+  targetAudience: string;
+}

@@ -60,6 +60,27 @@ useSeoMeta({
 
 const services = MOCK_SERVICE_DETAILS;
 const cta = MOCK_CTA;
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: MOCK_SERVICE_DETAILS.map((svc, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          item: {
+            '@type': 'Service',
+            name: svc.title,
+            description: svc.description,
+          },
+        })),
+      }),
+    },
+  ],
+});
 </script>
 
 <style lang="scss" scoped>
@@ -68,7 +89,7 @@ const cta = MOCK_CTA;
     padding: $spacing-3xl 0;
 
     &--alt {
-      background-color: $color-bg-light;
+      background-color: var(--color-bg-light);
     }
   }
 
@@ -89,7 +110,7 @@ const cta = MOCK_CTA;
     display: block;
     font-size: $font-size-3xl;
     font-weight: 800;
-    color: $color-primary;
+    color: var(--color-primary);
     opacity: 0.3;
     margin-bottom: $spacing-sm;
   }
@@ -97,54 +118,54 @@ const cta = MOCK_CTA;
   &__detail-title {
     font-size: $font-size-2xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-md;
   }
 
   &__detail-desc {
     font-size: $font-size-base;
-    color: $color-text-light;
+    color: var(--color-text-light);
     line-height: 1.8;
     margin-bottom: $spacing-lg;
   }
 
   &__detail-target {
     padding: $spacing-lg;
-    background-color: $color-bg-light;
+    background-color: var(--color-bg-light);
     border-radius: $border-radius-md;
 
     .page-services__detail--alt & {
-      background-color: $color-white;
+      background-color: var(--color-white);
     }
   }
 
   &__detail-target-heading {
     font-size: $font-size-sm;
     font-weight: 600;
-    color: $color-primary;
+    color: var(--color-primary);
     margin-bottom: $spacing-xs;
   }
 
   &__detail-target-text {
     font-size: $font-size-base;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__detail-features {
     padding: $spacing-xl;
-    background-color: $color-white;
-    border: 1px solid $color-border;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
     border-radius: $border-radius-lg;
 
     .page-services__detail--alt & {
-      background-color: $color-white;
+      background-color: var(--color-white);
     }
   }
 
   &__detail-features-heading {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-lg;
   }
 
@@ -157,7 +178,7 @@ const cta = MOCK_CTA;
     padding-left: $spacing-lg;
     margin-bottom: $spacing-md;
     font-size: $font-size-base;
-    color: $color-text;
+    color: var(--color-text);
     line-height: 1.6;
 
     &::before {
@@ -168,7 +189,7 @@ const cta = MOCK_CTA;
       width: 8px;
       height: 8px;
       border-radius: $border-radius-full;
-      background-color: $color-primary;
+      background-color: var(--color-primary);
     }
 
     &:last-child {

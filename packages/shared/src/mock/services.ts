@@ -1,10 +1,4 @@
-import type { ServiceItem } from '../types/company';
-
-/** サービス詳細 */
-export interface ServiceDetail extends ServiceItem {
-  features: string[];
-  targetAudience: string;
-}
+import type { ServiceDetail } from '../types/company';
 
 export const MOCK_SERVICE_DETAILS: ServiceDetail[] = [
   {

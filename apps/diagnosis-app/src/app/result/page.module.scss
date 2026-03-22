@@ -20,7 +20,7 @@
 
   &__plan-label {
     font-size: $font-size-sm;
-    color: $color-primary;
+    color: var(--color-primary);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -30,25 +30,25 @@
   &__plan-name {
     font-size: $font-size-3xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-sm;
   }
 
   &__plan-desc {
     font-size: $font-size-base;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-bottom: $spacing-lg;
   }
 
   &__plan-cost {
     font-size: $font-size-base;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__loading {
     text-align: center;
     padding: $spacing-3xl 0;
-    color: $color-text-light;
+    color: var(--color-text-light);
     font-size: $font-size-base;
   }
 
@@ -56,8 +56,8 @@
     display: inline-block;
     width: 40px;
     height: 40px;
-    border: 3px solid $color-border;
-    border-top-color: $color-primary;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-primary);
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
     margin-bottom: $spacing-md;
@@ -72,7 +72,7 @@
   &__plan-cost-value {
     font-size: $font-size-2xl;
     font-weight: 700;
-    color: $color-primary;
+    color: var(--color-primary);
     margin-left: $spacing-sm;
   }
 
@@ -84,7 +84,7 @@
   &__features-title {
     font-size: $font-size-xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-lg;
   }
 
@@ -98,17 +98,17 @@
   &__reasons-item {
     padding: $spacing-md $spacing-lg;
     padding-left: $spacing-2xl;
-    background-color: $color-bg-light;
+    background-color: var(--color-bg-light);
     border-radius: $border-radius-md;
     font-size: $font-size-base;
-    color: $color-text;
+    color: var(--color-text);
     position: relative;
 
     &::before {
       content: '\2713';
       position: absolute;
       left: $spacing-lg;
-      color: $color-success;
+      color: var(--color-success);
       font-weight: 700;
     }
   }
@@ -136,11 +136,11 @@
     border-radius: $border-radius-sm;
 
     &--included {
-      color: $color-text;
+      color: var(--color-text);
     }
 
     &--excluded {
-      color: $color-text-light;
+      color: var(--color-text-light);
       opacity: 0.6;
     }
   }
@@ -159,28 +159,32 @@
     gap: $spacing-md;
   }
 
-  &__print {
+  &__sub-actions {
     text-align: center;
     margin-top: $spacing-lg;
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
   }
 
-  &__print-btn {
+  &__sub-actions-btn {
     background: none;
-    border: 1px solid $color-border;
+    border: 1px solid var(--color-border);
     border-radius: $border-radius-md;
     padding: $spacing-sm $spacing-lg;
     font-size: $font-size-sm;
-    color: $color-text-light;
+    color: var(--color-text-light);
     cursor: pointer;
     transition: color $transition-base, border-color $transition-base;
 
     &:hover {
-      color: $color-primary;
-      border-color: $color-primary;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
     }
 
     &:focus-visible {
-      outline: 2px solid $color-primary;
+      outline: 2px solid var(--color-primary);
       outline-offset: 2px;
     }
   }
@@ -196,7 +200,7 @@
     }
 
     &__actions,
-    &__print {
+    &__sub-actions {
       display: none;
     }
   }

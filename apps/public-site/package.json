@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@corporate-estimate/shared": "*",
+    "@nuxtjs/sitemap": "^7.6.0",
     "nuxt": "^3.16.0",
     "vue": "^3.5.0"
   },

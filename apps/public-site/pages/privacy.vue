@@ -18,7 +18,12 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: 'プライバシーポリシー' });
+useSeoMeta({
+  title: 'プライバシーポリシー | Corporate Estimate',
+  description: '個人情報の取り扱いについてご説明します。',
+  ogTitle: 'プライバシーポリシー | Corporate Estimate',
+  ogDescription: '個人情報の取り扱いについてご説明します。',
+});
 </script>
 
 <style lang="scss" scoped>
@@ -32,15 +37,14 @@ useHead({ title: 'プライバシーポリシー' });
   }
 
   &__inner {
-    max-width: $content-max-width;
-    margin: 0 auto;
-    padding: 0 $spacing-md;
+    @include container;
+    max-width: 800px;
   }
 
   &__text {
     font-size: $font-size-base;
     line-height: 1.8;
-    color: $color-text;
+    color: var(--color-text);
   }
 }
 </style>

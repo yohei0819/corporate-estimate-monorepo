@@ -92,6 +92,21 @@ const baseURL = (config.app?.baseURL || '/').replace(/\/$/, '');
 const cta = MOCK_CTA;
 const diagnosisUrl = `${baseURL}${config.public.diagnosisAppOrigin}/diagnosis`;
 const featuredWorks = MOCK_WORKS.slice(0, 3);
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Corporate Estimate',
+        url: 'https://yohei0819.github.io/corporate-estimate-monorepo/',
+        description: '法人向けIT課題を診断・見積もりし、最適なソリューションをご提案します。',
+      }),
+    },
+  ],
+});
 </script>
 
 <style lang="scss" scoped>
@@ -99,20 +114,13 @@ const featuredWorks = MOCK_WORKS.slice(0, 3);
   &__hero {
     padding: $spacing-xl 0;
     text-align: center;
-    background-color: $color-bg-light;
-
-    @include respond-to(md) {
-      padding: $spacing-3xl 0;
-    }
-  }
-
-  &__hero-inner {
+    background-color: var(--color-bg-light);
     @include container;
   }
 
   &__hero-lead {
     font-size: $font-size-lg;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-bottom: $spacing-xl;
     line-height: 1.8;
   }
@@ -154,13 +162,13 @@ const featuredWorks = MOCK_WORKS.slice(0, 3);
   &__service-title {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-sm;
   }
 
   &__service-desc {
     font-size: $font-size-base;
-    color: $color-text-light;
+    color: var(--color-text-light);
     line-height: 1.7;
   }
 
@@ -171,14 +179,7 @@ const featuredWorks = MOCK_WORKS.slice(0, 3);
 
   &__works {
     padding: $spacing-xl 0;
-    background-color: $color-bg-light;
-
-    @include respond-to(md) {
-      padding: $spacing-3xl 0;
-    }
-  }
-
-  &__works-inner {
+    background-color: var(--color-bg-light);
     @include container;
   }
 
@@ -199,20 +200,20 @@ const featuredWorks = MOCK_WORKS.slice(0, 3);
 
   &__work-meta {
     font-size: $font-size-xs;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-bottom: $spacing-sm;
   }
 
   &__work-title {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-xs;
   }
 
   &__work-client {
     font-size: $font-size-sm;
-    color: $color-secondary;
+    color: var(--color-text-light);
   }
 
   &__works-more {

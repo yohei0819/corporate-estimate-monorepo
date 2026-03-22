@@ -3,9 +3,10 @@ export function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-/** 電話番号の簡易バリデーション（日本形式） */
+/** 電話番号の簡易バリデーション（日本形式：10〜11桁） */
 export function isValidPhone(phone: string): boolean {
-  return /^0\d{1,4}-?\d{1,4}-?\d{3,4}$/.test(phone);
+  const digits = phone.replace(/-/g, '');
+  return /^0\d{9,10}$/.test(digits);
 }
 
 /** 必須フィールドチェック */

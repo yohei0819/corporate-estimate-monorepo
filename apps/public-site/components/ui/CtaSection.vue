@@ -35,7 +35,7 @@ const resolvedHref = computed(() =>
 
 <style lang="scss" scoped>
 .cta-section {
-  background-color: $color-primary;
+  background-color: var(--color-primary);
   padding: $spacing-3xl 0;
 
   &__inner {
@@ -45,7 +45,7 @@ const resolvedHref = computed(() =>
 
   &__title {
     font-size: $font-size-2xl;
-    color: $color-white;
+    color: #ffffff;
     margin-bottom: $spacing-md;
 
     @include respond-to(md) {
@@ -55,20 +55,20 @@ const resolvedHref = computed(() =>
 
   &__description {
     font-size: $font-size-lg;
-    color: rgba($color-white, 0.9);
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: $spacing-xl;
     max-width: 600px;
     margin-inline: auto;
   }
 
-  // CTA 背景が $color-primary のため、ボタンを白背景に反転
+  // CTA 背景が primary のため、ボタンを白背景に反転
   :deep(.base-button) {
-    background-color: $color-white;
-    color: $color-primary;
-    border-color: $color-white;
+    background-color: #ffffff;
+    color: var(--color-primary);
+    border-color: #ffffff;
 
     &:hover {
-      background-color: rgba($color-white, 0.9);
+      background-color: rgba(255, 255, 255, 0.9);
     }
   }
 }

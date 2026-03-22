@@ -28,8 +28,8 @@
 
   &__section {
     margin-bottom: $spacing-xl;
-    background-color: $color-white;
-    border: 1px solid $color-border;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
     border-radius: $border-radius-lg;
     padding: $spacing-lg;
   }
@@ -37,7 +37,7 @@
   &__section-title {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-md;
   }
 
@@ -57,32 +57,32 @@
     align-items: center;
     gap: $spacing-xs;
     padding: $spacing-lg;
-    background-color: $color-bg-light;
-    border: 2px solid $color-border;
+    background-color: var(--color-bg-light);
+    border: 2px solid var(--color-border);
     border-radius: $border-radius-md;
     cursor: pointer;
     font-family: $font-family-base;
     transition: border-color $transition-base;
 
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--color-primary);
     }
 
     &--selected {
-      border-color: $color-primary;
-      background-color: rgba(26, 115, 232, 0.05);
+      border-color: var(--color-primary);
+      background-color: var(--color-primary-selected);
     }
   }
 
   &__plan-name {
     font-size: $font-size-base;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__plan-price {
     font-size: $font-size-sm;
-    color: $color-primary;
+    color: var(--color-primary);
     font-weight: 600;
   }
 
@@ -102,12 +102,12 @@
     transition: background-color $transition-base;
 
     &:hover {
-      background-color: $color-bg-light;
+      background-color: var(--color-bg-light);
     }
   }
 
   &__option-radio {
-    accent-color: $color-primary;
+    accent-color: var(--color-primary);
   }
 
   &__option-text {
@@ -115,12 +115,12 @@
     justify-content: space-between;
     flex: 1;
     font-size: $font-size-base;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__option-surcharge {
     font-size: $font-size-sm;
-    color: $color-primary;
+    color: var(--color-primary);
     font-weight: 600;
   }
 
@@ -132,8 +132,8 @@
   }
 
   &__summary {
-    background-color: $color-white;
-    border: 1px solid $color-border;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
     border-radius: $border-radius-lg;
     padding: $spacing-lg;
     position: sticky;
@@ -143,10 +143,10 @@
   &__summary-title {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-lg;
     padding-bottom: $spacing-md;
-    border-bottom: 1px solid $color-border;
+    border-bottom: 1px solid var(--color-border);
   }
 
   &__summary-plan,
@@ -154,7 +154,7 @@
     display: flex;
     justify-content: space-between;
     font-size: $font-size-sm;
-    color: $color-text-light;
+    color: var(--color-text-light);
     padding: $spacing-xs 0;
   }
 
@@ -164,12 +164,12 @@
     align-items: center;
     margin-top: $spacing-md;
     padding-top: $spacing-md;
-    border-top: 2px solid $color-text;
+    border-top: 2px solid var(--color-text);
   }
 
   &__summary-total-price {
     font-size: $font-size-2xl;
     font-weight: 700;
-    color: $color-primary;
+    color: var(--color-primary);
   }
 }

@@ -1,5 +1,6 @@
 export * from './navigation';
 export * from './pricing';
+export * from './labels';
 
 /** サイト共通定数 */
 export const SITE_NAME = 'Corporate Estimate';

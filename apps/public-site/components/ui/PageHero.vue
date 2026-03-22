@@ -18,7 +18,7 @@ defineProps<{
 <style lang="scss" scoped>
 .page-hero {
   padding: $spacing-3xl 0;
-  background-color: $color-bg-light;
+  background-color: var(--color-bg-light);
   text-align: center;
 
   &__inner {
@@ -27,7 +27,7 @@ defineProps<{
 
   &__description {
     font-size: $font-size-lg;
-    color: $color-text-light;
+    color: var(--color-text-light);
     max-width: 640px;
     margin-inline: auto;
   }

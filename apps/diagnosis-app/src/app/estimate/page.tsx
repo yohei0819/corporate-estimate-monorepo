@@ -116,8 +116,8 @@ export default function EstimatePage() {
                 <span>基本料金（{estimate.planName}）</span>
                 <span>{formatCurrency(estimate.basePrice)}</span>
               </div>
-              {estimate.options.map((item, i) => (
-                <div key={i} className={styles['estimate__summary-item']}>
+              {estimate.options.map((item) => (
+                <div key={item.label} className={styles['estimate__summary-item']}>
                   <span>{item.label}</span>
                   <span>+{formatCurrency(item.price)}</span>
                 </div>

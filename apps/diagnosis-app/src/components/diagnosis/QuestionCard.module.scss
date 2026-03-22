@@ -2,8 +2,8 @@
 @use '../../styles/mixins' as *;
 
 .question-card {
-  background-color: $color-white;
-  border: 1px solid $color-border;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: $border-radius-lg;
   padding: $spacing-2xl;
   margin-bottom: $spacing-xl;
@@ -11,7 +11,7 @@
   &__title {
     font-size: $font-size-xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-xl;
     text-align: center;
   }
@@ -33,22 +33,22 @@
     padding: $spacing-lg;
     font-family: $font-family-base;
     font-size: $font-size-base;
-    color: $color-text;
-    background-color: $color-bg-light;
-    border: 2px solid $color-border;
+    color: var(--color-text);
+    background-color: var(--color-bg-light);
+    border: 2px solid var(--color-border);
     border-radius: $border-radius-md;
     cursor: pointer;
     transition: border-color $transition-base, background-color $transition-base;
     text-align: center;
 
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--color-primary);
     }
 
     &--selected {
-      border-color: $color-primary;
-      background-color: rgba(26, 115, 232, 0.05);
-      color: $color-primary;
+      border-color: var(--color-primary);
+      background-color: var(--color-primary-selected);
+      color: var(--color-primary);
       font-weight: 600;
     }
   }

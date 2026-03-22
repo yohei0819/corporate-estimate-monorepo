@@ -30,17 +30,17 @@
 
   // Variants
   &--primary {
-    background-color: $color-primary;
-    color: $color-white;
+    background-color: var(--color-primary);
+    color: #ffffff;
 
     &:hover {
-      background-color: $color-primary-dark;
+      background-color: var(--color-primary-dark);
     }
   }
 
   &--secondary {
-    background-color: $color-secondary;
-    color: $color-white;
+    background-color: var(--color-secondary);
+    color: #ffffff;
 
     &:hover {
       opacity: 0.9;
@@ -49,17 +49,17 @@
 
   &--outline {
     background-color: transparent;
-    color: $color-primary;
-    border-color: $color-primary;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 
     &:hover {
-      background-color: $color-primary;
-      color: $color-white;
+      background-color: var(--color-primary);
+      color: #ffffff;
     }
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 

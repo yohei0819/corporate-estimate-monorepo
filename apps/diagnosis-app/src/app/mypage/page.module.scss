@@ -16,7 +16,7 @@
   &__loading {
     text-align: center;
     padding: $spacing-3xl 0;
-    color: $color-text-light;
+    color: var(--color-text-light);
     font-size: $font-size-base;
   }
 
@@ -27,14 +27,14 @@
   &__section-title {
     font-size: $font-size-xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-lg;
   }
 
   &__card-title {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__user-info {
@@ -42,7 +42,7 @@
     flex-direction: column;
     gap: $spacing-sm;
     font-size: $font-size-base;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__list {
@@ -54,7 +54,7 @@
   &__empty {
     text-align: center;
     padding: $spacing-2xl;
-    color: $color-text-light;
+    color: var(--color-text-light);
     font-size: $font-size-base;
   }
 
@@ -68,20 +68,20 @@
 
   &__result-date {
     font-size: $font-size-sm;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-bottom: $spacing-xs;
   }
 
   &__result-plan {
     font-size: $font-size-base;
     font-weight: 600;
-    color: $color-text;
+    color: var(--color-text);
   }
 
   &__result-cost {
     font-size: $font-size-xl;
     font-weight: 700;
-    color: $color-primary;
+    color: var(--color-primary);
   }
 
   &__actions {

@@ -24,7 +24,7 @@
   </NuxtLink>
   <button
     v-else
-    type="button"
+    :type="type"
     :class="classes"
     :disabled="disabled"
   >
@@ -41,6 +41,7 @@ const props = withDefaults(defineProps<{
   href?: string;
   /** @deprecated Use href prop instead – tag is kept for backward compatibility */
   tag?: 'button' | 'a';
+  type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   /** Nuxt ルーター外への遷移（クライアントサイドルーティングをスキップ） */
   external?: boolean;
@@ -48,6 +49,7 @@ const props = withDefaults(defineProps<{
   variant: 'primary',
   size: 'md',
   tag: 'button',
+  type: 'button',
   disabled: false,
   external: false,
 });
@@ -95,17 +97,17 @@ const classes = computed(() => [
 
   // Variants
   &--primary {
-    background-color: $color-primary;
-    color: $color-white;
+    background-color: var(--color-primary);
+    color: #ffffff;
 
     &:hover {
-      background-color: $color-primary-dark;
+      background-color: var(--color-primary-dark);
     }
   }
 
   &--secondary {
-    background-color: $color-secondary;
-    color: $color-white;
+    background-color: var(--color-secondary);
+    color: #ffffff;
 
     &:hover {
       opacity: 0.9;
@@ -114,17 +116,17 @@ const classes = computed(() => [
 
   &--outline {
     background-color: transparent;
-    color: $color-primary;
-    border-color: $color-primary;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 
     &:hover {
-      background-color: $color-primary;
-      color: $color-white;
+      background-color: var(--color-primary);
+      color: #ffffff;
     }
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 

@@ -18,7 +18,12 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: '特定商取引法に基づく表記' });
+useSeoMeta({
+  title: '特定商取引法に基づく表記 | Corporate Estimate',
+  description: '特定商取引法に基づく表記についてご説明します。',
+  ogTitle: '特定商取引法に基づく表記 | Corporate Estimate',
+  ogDescription: '特定商取引法に基づく表記についてご説明します。',
+});
 </script>
 
 <style lang="scss" scoped>
@@ -32,15 +37,14 @@ useHead({ title: '特定商取引法に基づく表記' });
   }
 
   &__inner {
-    max-width: $content-max-width;
-    margin: 0 auto;
-    padding: 0 $spacing-md;
+    @include container;
+    max-width: 800px;
   }
 
   &__text {
     font-size: $font-size-base;
     line-height: 1.8;
-    color: $color-text;
+    color: var(--color-text);
   }
 }
 </style>

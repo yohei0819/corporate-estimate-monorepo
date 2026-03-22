@@ -39,23 +39,23 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
   width: 48px;
   height: 48px;
   border-radius: $border-radius-full;
-  background-color: $color-primary;
-  color: $color-white;
+  background-color: var(--color-primary);
+  color: #ffffff;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: $shadow-md;
+  box-shadow: var(--shadow-md);
   transition: background-color $transition-base, opacity $transition-base, transform $transition-base;
   z-index: 50;
 
   &:hover {
-    background-color: $color-primary-dark;
+    background-color: var(--color-primary-dark);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 }

@@ -5,14 +5,14 @@
 
   &__bar {
     height: 8px;
-    background-color: $color-border;
+    background-color: var(--color-border);
     border-radius: $border-radius-full;
     overflow: hidden;
   }
 
   &__progress {
     height: 100%;
-    background-color: $color-primary;
+    background-color: var(--color-primary);
     border-radius: $border-radius-full;
     transition: width 0.3s ease;
   }
@@ -20,7 +20,7 @@
   &__label {
     text-align: center;
     font-size: $font-size-sm;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-top: $spacing-sm;
   }
 }

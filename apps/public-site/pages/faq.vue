@@ -33,8 +33,8 @@
 </template>
 
 <script setup lang="ts">
-import { MOCK_FAQ_ITEMS } from '@corporate-estimate/shared';
-import type { FaqCategory, FaqItem } from '@corporate-estimate/shared';
+import { MOCK_FAQ_ITEMS, FAQ_CATEGORY_LABELS, FAQ_CATEGORY_ORDER } from '@corporate-estimate/shared';
+import type { FaqItem } from '@corporate-estimate/shared';
 
 useSeoMeta({
   title: 'よくあるご質問 | Corporate Estimate',
@@ -43,27 +43,38 @@ useSeoMeta({
   ogDescription: 'サービスに関するよくあるご質問をまとめました。',
 });
 
-const CATEGORY_LABELS: Record<FaqCategory, string> = {
-  general: '一般的なご質問',
-  service: 'サービスについて',
-  pricing: '料金・お見積もりについて',
-  support: 'サポートについて',
-};
-
-const CATEGORY_ORDER: FaqCategory[] = ['general', 'service', 'pricing', 'support'];
-
 interface FaqGroup {
   label: string;
   items: FaqItem[];
 }
 
-const groupedFaq = CATEGORY_ORDER.reduce<FaqGroup[]>((acc, category) => {
+const groupedFaq = FAQ_CATEGORY_ORDER.reduce<FaqGroup[]>((acc, category) => {
   const items = MOCK_FAQ_ITEMS.filter((item) => item.category === category);
   if (items.length > 0) {
-    acc.push({ label: CATEGORY_LABELS[category], items });
+    acc.push({ label: FAQ_CATEGORY_LABELS[category], items });
   }
   return acc;
 }, []);
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: MOCK_FAQ_ITEMS.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      }),
+    },
+  ],
+});
 </script>
 
 <style lang="scss" scoped>
@@ -88,10 +99,10 @@ const groupedFaq = CATEGORY_ORDER.reduce<FaqGroup[]>((acc, category) => {
   &__group-heading {
     font-size: $font-size-xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-lg;
     padding-bottom: $spacing-sm;
-    border-bottom: 2px solid $color-primary;
+    border-bottom: 2px solid var(--color-primary);
   }
 }
 </style>

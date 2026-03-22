@@ -22,14 +22,14 @@ withDefaults(defineProps<{
 
 <style lang="scss" scoped>
 .base-card {
-  background-color: $color-white;
-  border: 1px solid $color-border;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: $border-radius-lg;
   overflow: hidden;
   transition: box-shadow $transition-base;
 
   &--hoverable:hover {
-    box-shadow: $shadow-md;
+    box-shadow: var(--shadow-md);
   }
 
   &__header {
@@ -42,7 +42,7 @@ withDefaults(defineProps<{
 
   &__footer {
     padding: 0 $spacing-lg $spacing-lg;
-    border-top: 1px solid $color-border;
+    border-top: 1px solid var(--color-border);
     padding-top: $spacing-lg;
   }
 }

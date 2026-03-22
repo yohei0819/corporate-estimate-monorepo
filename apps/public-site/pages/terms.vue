@@ -18,7 +18,12 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: '利用規約' });
+useSeoMeta({
+  title: '利用規約 | Corporate Estimate',
+  description: 'サービスのご利用条件についてご説明します。',
+  ogTitle: '利用規約 | Corporate Estimate',
+  ogDescription: 'サービスのご利用条件についてご説明します。',
+});
 </script>
 
 <style lang="scss" scoped>
@@ -32,15 +37,14 @@ useHead({ title: '利用規約' });
   }
 
   &__inner {
-    max-width: $content-max-width;
-    margin: 0 auto;
-    padding: 0 $spacing-md;
+    @include container;
+    max-width: 800px;
   }
 
   &__text {
     font-size: $font-size-base;
     line-height: 1.8;
-    color: $color-text;
+    color: var(--color-text);
   }
 }
 </style>

@@ -51,12 +51,12 @@ defineProps<{
   }
 
   &__separator {
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin: 0 $spacing-xs;
   }
 
   &__link {
-    color: $color-primary;
+    color: var(--color-primary);
     text-decoration: none;
     transition: color $transition-base;
 
@@ -66,7 +66,7 @@ defineProps<{
   }
 
   &__current {
-    color: $color-text-light;
+    color: var(--color-text-light);
   }
 }
 </style>

@@ -8,19 +8,16 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Button } from '@/components/ui/Button';
 import { StepIndicator } from '@/components/diagnosis/StepIndicator';
 import { QuestionCard } from '@/components/diagnosis/QuestionCard';
+import { STORAGE_KEYS } from '@/lib/storage';
 import styles from './page.module.scss';
 
-/** DIAGNOSIS_STEPS から初期回答を自動生成 */
+/** DiagnosisAnswers の全キーを空文字で初期化 */
 function createInitialAnswers(): DiagnosisAnswers {
-  return {
-    siteType: '',
-    pageCount: '',
-    designCreation: '',
-    cms: '',
-    contactForm: '',
-    multilingual: '',
-    animation: '',
-  };
+  const entries: Record<string, string> = {};
+  for (const step of DIAGNOSIS_STEPS) {
+    entries[step.id] = '';
+  }
+  return entries as unknown as DiagnosisAnswers;
 }
 
 export default function DiagnosisPage() {
@@ -41,8 +38,7 @@ export default function DiagnosisPage() {
     if (currentStep < totalSteps - 1) {
       setCurrentStep((prev) => prev + 1);
     } else {
-      sessionStorage.setItem('diagnosisAnswers', JSON.stringify(answers));
-      localStorage.setItem('diagnosisAnswers', JSON.stringify(answers));
+      localStorage.setItem(STORAGE_KEYS.diagnosisAnswers, JSON.stringify(answers));
       router.push('/result');
     }
   };

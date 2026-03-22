@@ -24,6 +24,7 @@
               required
               :aria-invalid="fieldErrors.company ? 'true' : undefined"
               :aria-describedby="fieldErrors.company ? 'error-company' : undefined"
+              @blur="handleBlur('company')"
             >
             <p v-if="fieldErrors.company" :id="'error-company'" class="page-contact__field-error">{{ fieldErrors.company }}</p>
           </div>
@@ -39,6 +40,7 @@
               required
               :aria-invalid="fieldErrors.name ? 'true' : undefined"
               :aria-describedby="fieldErrors.name ? 'error-name' : undefined"
+              @blur="handleBlur('name')"
             >
             <p v-if="fieldErrors.name" :id="'error-name'" class="page-contact__field-error">{{ fieldErrors.name }}</p>
           </div>
@@ -54,6 +56,7 @@
               required
               :aria-invalid="fieldErrors.email ? 'true' : undefined"
               :aria-describedby="fieldErrors.email ? 'error-email' : undefined"
+              @blur="handleBlur('email')"
             >
             <p v-if="fieldErrors.email" :id="'error-email'" class="page-contact__field-error">{{ fieldErrors.email }}</p>
           </div>
@@ -78,6 +81,7 @@
               required
               :aria-invalid="fieldErrors.category ? 'true' : undefined"
               :aria-describedby="fieldErrors.category ? 'error-category' : undefined"
+              @blur="handleBlur('category')"
             >
               <option value="" disabled>選択してください</option>
               <option value="service">サービスについて</option>
@@ -99,12 +103,13 @@
               required
               :aria-invalid="fieldErrors.message ? 'true' : undefined"
               :aria-describedby="fieldErrors.message ? 'error-message' : undefined"
+              @blur="handleBlur('message')"
             />
             <p v-if="fieldErrors.message" :id="'error-message'" class="page-contact__field-error">{{ fieldErrors.message }}</p>
           </div>
 
           <div class="page-contact__actions">
-            <UiBaseButton variant="primary" size="lg" tag="button" :disabled="isSubmitting">
+            <UiBaseButton variant="primary" size="lg" type="submit" :disabled="isSubmitting">
               {{ isSubmitting ? '送信中...' : '送信する' }}
             </UiBaseButton>
           </div>
@@ -158,6 +163,20 @@ useSeoMeta({
 
 const companyInfo = MOCK_COMPANY_DETAIL;
 
+/** 必須フィールド名 */
+type RequiredField = 'company' | 'name' | 'email' | 'category' | 'message';
+
+const REQUIRED_FIELDS: RequiredField[] = ['company', 'name', 'email', 'category', 'message'];
+
+/** バリデーションルール定義（単一ソース） */
+const VALIDATION_RULES: Record<RequiredField, { test: (v: string) => boolean; message: string }> = {
+  company:  { test: isNotEmpty,    message: '会社名を入力してください。' },
+  name:     { test: isNotEmpty,    message: 'ご担当者名を入力してください。' },
+  email:    { test: isValidEmail,  message: '有効なメールアドレスを入力してください。' },
+  category: { test: isNotEmpty,    message: 'お問い合わせ種別を選択してください。' },
+  message:  { test: isNotEmpty,    message: 'お問い合わせ内容を入力してください。' },
+};
+
 const form = reactive({
   company: '',
   name: '',
@@ -167,35 +186,65 @@ const form = reactive({
   message: '',
 });
 
-const isSubmitting = ref(false);
-const submitStatus = ref<'idle' | 'success' | 'error'>('idle');
-const validationErrors = ref<string[]>([]);
+const touched = reactive<Record<RequiredField, boolean>>({
+  company: false,
+  name: false,
+  email: false,
+  category: false,
+  message: false,
+});
 
+const isSubmitting = ref(false);
+const isSubmitted = ref(false);
+const submitStatus = ref<'idle' | 'success' | 'error'>('idle');
+
+/** 個別フィールドのバリデーション */
+function validateField(field: RequiredField): string | null {
+  const rule = VALIDATION_RULES[field];
+  return rule.test(form[field]) ? null : rule.message;
+}
+
+/** フィールドエラー — touched かつ submit 済みのフィールドに対してリアルタイム表示 */
 const fieldErrors = computed(() => {
-  const map: Record<string, string> = {};
-  for (const err of validationErrors.value) {
-    if (err.includes('会社名')) map.company = err;
-    else if (err.includes('担当者')) map.name = err;
-    else if (err.includes('メール')) map.email = err;
-    else if (err.includes('種別')) map.category = err;
-    else if (err.includes('内容')) map.message = err;
+  const map: Partial<Record<RequiredField, string>> = {};
+  for (const field of REQUIRED_FIELDS) {
+    if (touched[field] || isSubmitted.value) {
+      const error = validateField(field);
+      if (error) map[field] = error;
+    }
   }
   return map;
 });
 
-function validate(): string[] {
-  const errors: string[] = [];
-  if (!isNotEmpty(form.company)) errors.push('会社名を入力してください。');
-  if (!isNotEmpty(form.name)) errors.push('ご担当者名を入力してください。');
-  if (!isValidEmail(form.email)) errors.push('有効なメールアドレスを入力してください。');
-  if (!isNotEmpty(form.category)) errors.push('お問い合わせ種別を選択してください。');
-  if (!isNotEmpty(form.message)) errors.push('お問い合わせ内容を入力してください。');
-  return errors;
+/** submit 時に表示するエラー一覧 */
+const validationErrors = computed(() => {
+  if (!isSubmitted.value) return [];
+  return REQUIRED_FIELDS
+    .map(validateField)
+    .filter((err): err is string => err !== null);
+});
+
+function handleBlur(field: RequiredField) {
+  touched[field] = true;
+}
+
+function resetForm() {
+  form.company = '';
+  form.name = '';
+  form.email = '';
+  form.phone = '';
+  form.category = '';
+  form.message = '';
+  isSubmitted.value = false;
+  for (const field of REQUIRED_FIELDS) {
+    touched[field] = false;
+  }
 }
 
 async function handleSubmit() {
   submitStatus.value = 'idle';
-  validationErrors.value = validate();
+  isSubmitted.value = true;
+
   if (validationErrors.value.length > 0) return;
 
   isSubmitting.value = true;
@@ -203,13 +252,7 @@ async function handleSubmit() {
     // モックAPI応答（実際のAPI接続時に差し替え）
     await new Promise((resolve) => setTimeout(resolve, 1000));
     submitStatus.value = 'success';
-    // フォームリセット
-    form.company = '';
-    form.name = '';
-    form.email = '';
-    form.phone = '';
-    form.category = '';
-    form.message = '';
+    resetForm();
   } catch {
     submitStatus.value = 'error';
   } finally {
@@ -237,7 +280,7 @@ async function handleSubmit() {
     display: block;
     font-size: $font-size-sm;
     font-weight: 600;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-xs;
   }
 
@@ -246,8 +289,8 @@ async function handleSubmit() {
     padding: 1px 6px;
     font-size: $font-size-xs;
     font-weight: 600;
-    color: $color-white;
-    background-color: $color-danger;
+    color: #ffffff;
+    background-color: var(--color-danger);
     border-radius: $border-radius-sm;
     margin-left: $spacing-xs;
   }
@@ -259,32 +302,32 @@ async function handleSubmit() {
     padding: $spacing-sm $spacing-md;
     font-size: $font-size-base;
     font-family: $font-family-base;
-    color: $color-text;
-    background-color: $color-white;
-    border: 1px solid $color-border;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
     border-radius: $border-radius-md;
     transition: border-color $transition-base;
 
     &:focus {
       outline: none;
-      border-color: $color-primary;
-      box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-selected);
     }
 
     &:focus-visible {
-      outline: 2px solid $color-primary;
+      outline: 2px solid var(--color-primary);
       outline-offset: 2px;
     }
 
     &::placeholder {
-      color: $color-text-light;
+      color: var(--color-text-light);
     }
 
     &[aria-invalid='true'] {
-      border-color: $color-danger;
+      border-color: var(--color-danger);
 
       &:focus {
-        box-shadow: 0 0 0 3px rgba($color-danger, 0.15);
+        box-shadow: 0 0 0 3px var(--color-danger-bg);
       }
     }
   }
@@ -303,7 +346,7 @@ async function handleSubmit() {
   }
 
   &__field-error {
-    color: $color-danger;
+    color: var(--color-danger);
     font-size: $font-size-xs;
     margin-top: $spacing-xs;
   }
@@ -314,12 +357,12 @@ async function handleSubmit() {
   }
 
   &__validation-errors {
-    background-color: rgba($color-danger, 0.08);
-    border: 1px solid rgba($color-danger, 0.3);
+    background-color: var(--color-danger-bg);
+    border: 1px solid var(--color-danger);
     border-radius: $border-radius-md;
     padding: $spacing-md $spacing-lg;
     margin-bottom: $spacing-lg;
-    color: $color-danger;
+    color: var(--color-danger);
     font-size: $font-size-sm;
     list-style: disc inside;
 
@@ -332,10 +375,10 @@ async function handleSubmit() {
     text-align: center;
     margin-top: $spacing-lg;
     padding: $spacing-md;
-    background-color: rgba($color-success, 0.08);
-    border: 1px solid rgba($color-success, 0.3);
+    background-color: rgba(30, 142, 62, 0.08);
+    border: 1px solid var(--color-success);
     border-radius: $border-radius-md;
-    color: $color-success;
+    color: var(--color-success);
     font-size: $font-size-sm;
   }
 
@@ -343,17 +386,17 @@ async function handleSubmit() {
     text-align: center;
     margin-top: $spacing-lg;
     padding: $spacing-md;
-    background-color: rgba($color-danger, 0.08);
-    border: 1px solid rgba($color-danger, 0.3);
+    background-color: var(--color-danger-bg);
+    border: 1px solid var(--color-danger);
     border-radius: $border-radius-md;
-    color: $color-danger;
+    color: var(--color-danger);
     font-size: $font-size-sm;
   }
 
   // Info
   &__info {
     padding: $spacing-3xl 0;
-    background-color: $color-bg-light;
+    background-color: var(--color-bg-light);
   }
 
   &__info-inner {
@@ -373,20 +416,20 @@ async function handleSubmit() {
   &__info-title {
     font-size: $font-size-sm;
     font-weight: 600;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-bottom: $spacing-sm;
   }
 
   &__info-value {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-xs;
   }
 
   &__info-note {
     font-size: $font-size-xs;
-    color: $color-text-light;
+    color: var(--color-text-light);
   }
 }
 </style>

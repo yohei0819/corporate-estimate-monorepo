@@ -44,7 +44,7 @@ useSeoMeta({
   &__code {
     font-size: 5rem;
     font-weight: 800;
-    color: $color-primary;
+    color: var(--color-primary);
     opacity: 0.3;
     line-height: 1;
     margin-bottom: $spacing-md;
@@ -53,13 +53,13 @@ useSeoMeta({
   &__title {
     font-size: $font-size-2xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-md;
   }
 
   &__message {
     font-size: $font-size-base;
-    color: $color-text-light;
+    color: var(--color-text-light);
     line-height: 1.7;
     margin-bottom: $spacing-xl;
   }

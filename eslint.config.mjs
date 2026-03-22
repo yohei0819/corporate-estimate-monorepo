@@ -10,10 +10,12 @@ export default [
     ignores: [
       '**/node_modules/**',
       '**/dist/**',
+      '**/out/**',
       '**/.output/**',
       '**/.next/**',
       '**/.nuxt/**',
       '**/coverage/**',
+      '**/next-env.d.ts',
     ],
   },
 
@@ -37,6 +39,9 @@ export default [
     rules: {
       ...eslint.configs.recommended.rules,
       ...tseslint.configs['recommended'].rules,
+
+      // TypeScript が型チェックで未定義変数を検出するため no-undef は不要
+      'no-undef': 'off',
 
       // TypeScript
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],

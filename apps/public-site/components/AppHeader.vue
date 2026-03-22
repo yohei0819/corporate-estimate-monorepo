@@ -37,8 +37,8 @@ const navItems = HEADER_NAV_ITEMS;
   left: 0;
   width: 100%;
   height: $header-height;
-  background-color: $color-white;
-  border-bottom: 1px solid $color-border;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
   z-index: 100;
 
   &__inner {
@@ -52,7 +52,7 @@ const navItems = HEADER_NAV_ITEMS;
   &__logo {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-primary;
+    color: var(--color-primary);
     text-decoration: none;
   }
 
@@ -75,7 +75,7 @@ const navItems = HEADER_NAV_ITEMS;
     display: block;
     width: 22px;
     height: 2px;
-    background-color: $color-text;
+    background-color: var(--color-text);
     border-radius: 1px;
   }
 
@@ -86,9 +86,9 @@ const navItems = HEADER_NAV_ITEMS;
       top: $header-height;
       left: 0;
       right: 0;
-      background-color: $color-white;
-      border-bottom: 1px solid $color-border;
-      box-shadow: $shadow-md;
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-md);
 
       &--open {
         display: block;
@@ -110,7 +110,7 @@ const navItems = HEADER_NAV_ITEMS;
 
   &__nav-item {
     @media (max-width: 767px) {
-      border-bottom: 1px solid $color-border;
+      border-bottom: 1px solid var(--color-border);
 
       &:last-child {
         border-bottom: none;
@@ -120,7 +120,7 @@ const navItems = HEADER_NAV_ITEMS;
 
   &__nav-link {
     font-size: $font-size-sm;
-    color: $color-text;
+    color: var(--color-text);
     text-decoration: none;
     transition: color $transition-base;
 
@@ -130,7 +130,7 @@ const navItems = HEADER_NAV_ITEMS;
     }
 
     &:hover {
-      color: $color-primary;
+      color: var(--color-primary);
     }
   }
 }

@@ -7,8 +7,8 @@
   width: 48px;
   height: 48px;
   border-radius: $border-radius-full;
-  background-color: $color-primary;
-  color: $color-white;
+  background-color: var(--color-primary);
+  color: #ffffff;
   border: none;
   cursor: pointer;
   display: flex;
@@ -22,11 +22,11 @@
   pointer-events: none;
 
   &:hover {
-    background-color: $color-primary-dark;
+    background-color: var(--color-primary-dark);
   }
 
   &:focus-visible {
-    outline: 2px solid $color-primary;
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 

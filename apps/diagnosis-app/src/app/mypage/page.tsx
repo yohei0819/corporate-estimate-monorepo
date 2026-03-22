@@ -6,29 +6,20 @@ import { formatCurrency } from '@corporate-estimate/shared';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
+import type { HistoryEntry, AuthUser } from '@/lib/storage';
+import { STORAGE_KEYS } from '@/lib/storage';
+import { useToast } from '@/components/ui/Toast';
 import styles from './page.module.scss';
-
-interface SavedResult {
-  id: string;
-  date: string;
-  plan: string;
-  cost: number;
-}
-
-interface AuthUser {
-  email: string;
-  name: string;
-  company: string;
-}
 
 export default function MyPage() {
   const router = useRouter();
+  const { showToast } = useToast();
   const [user, setUser] = useState<AuthUser | null>(null);
-  const [results, setResults] = useState<SavedResult[]>([]);
+  const [results, setResults] = useState<HistoryEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const authStr = localStorage.getItem('auth');
+    const authStr = localStorage.getItem(STORAGE_KEYS.auth);
     if (!authStr) {
       router.replace('/login');
       return;
@@ -41,9 +32,9 @@ export default function MyPage() {
     }
 
     try {
-      const historyStr = localStorage.getItem('diagnosisHistory');
+      const historyStr = localStorage.getItem(STORAGE_KEYS.diagnosisHistory);
       if (historyStr) {
-        setResults(JSON.parse(historyStr) as SavedResult[]);
+        setResults(JSON.parse(historyStr) as HistoryEntry[]);
       }
     } catch {
       setResults([]);
@@ -65,7 +56,8 @@ export default function MyPage() {
   if (!user) return null;
 
   const handleLogout = () => {
-    localStorage.removeItem('auth');
+    localStorage.removeItem(STORAGE_KEYS.auth);
+    showToast('ログアウトしました');
     router.push('/login');
   };
 

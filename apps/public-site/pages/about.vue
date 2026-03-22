@@ -96,6 +96,28 @@ const company = MOCK_COMPANY_DETAIL;
 const history = MOCK_COMPANY_HISTORY;
 const strengths = MOCK_COMPANY_STRENGTHS;
 const cta = MOCK_CTA;
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: company.name,
+        description: company.description,
+        address: {
+          '@type': 'PostalAddress',
+          addressCountry: 'JP',
+          streetAddress: company.address,
+        },
+        telephone: company.phone,
+        email: company.email,
+        url: 'https://yohei0819.github.io/corporate-estimate-monorepo/',
+      }),
+    },
+  ],
+});
 </script>
 
 <style lang="scss" scoped>
@@ -114,20 +136,20 @@ const cta = MOCK_CTA;
   &__intro-heading {
     font-size: $font-size-2xl;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-lg;
   }
 
   &__intro-text {
     font-size: $font-size-base;
-    color: $color-text-light;
+    color: var(--color-text-light);
     line-height: 2;
   }
 
   // Strengths
   &__strengths {
     padding: $spacing-3xl 0;
-    background-color: $color-bg-light;
+    background-color: var(--color-bg-light);
   }
 
   &__strengths-inner {
@@ -147,13 +169,13 @@ const cta = MOCK_CTA;
   &__strength-title {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-primary;
+    color: var(--color-primary);
     margin-bottom: $spacing-sm;
   }
 
   &__strength-desc {
     font-size: $font-size-base;
-    color: $color-text-light;
+    color: var(--color-text-light);
     line-height: 1.7;
   }
 
@@ -168,7 +190,7 @@ const cta = MOCK_CTA;
   }
 
   &__history-list {
-    border-left: 3px solid $color-primary;
+    border-left: 3px solid var(--color-primary);
     padding-left: $spacing-lg;
   }
 
@@ -186,20 +208,20 @@ const cta = MOCK_CTA;
     flex-shrink: 0;
     font-size: $font-size-sm;
     font-weight: 700;
-    color: $color-primary;
+    color: var(--color-primary);
     min-width: 60px;
   }
 
   &__history-desc {
     font-size: $font-size-base;
-    color: $color-text;
+    color: var(--color-text);
     line-height: 1.6;
   }
 
   // Info table
   &__info {
     padding: $spacing-3xl 0;
-    background-color: $color-bg-light;
+    background-color: var(--color-bg-light);
   }
 
   &__info-inner {
@@ -214,7 +236,7 @@ const cta = MOCK_CTA;
     th,
     td {
       padding: $spacing-md $spacing-lg;
-      border-bottom: 1px solid $color-border;
+      border-bottom: 1px solid var(--color-border);
       text-align: left;
       font-size: $font-size-base;
     }
@@ -222,8 +244,8 @@ const cta = MOCK_CTA;
     th {
       width: 160px;
       font-weight: 600;
-      color: $color-text;
-      background-color: $color-white;
+      color: var(--color-text);
+      background-color: var(--color-white);
 
       @include respond-to(md) {
         width: 200px;
@@ -231,7 +253,7 @@ const cta = MOCK_CTA;
     }
 
     td {
-      color: $color-text-light;
+      color: var(--color-text-light);
     }
   }
 }

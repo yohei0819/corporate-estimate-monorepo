@@ -5,7 +5,7 @@
   &__hero {
     padding: $spacing-xl 0;
     text-align: center;
-    background-color: $color-bg-light;
+    background-color: var(--color-bg-light);
 
     @include respond-to(md) {
       padding: $spacing-3xl 0;
@@ -18,7 +18,7 @@
 
   &__hero-lead {
     font-size: $font-size-lg;
-    color: $color-text-light;
+    color: var(--color-text-light);
     margin-bottom: $spacing-xl;
   }
 
@@ -52,12 +52,12 @@
   &__feature-title {
     font-size: $font-size-lg;
     font-weight: 700;
-    color: $color-text;
+    color: var(--color-text);
     margin-bottom: $spacing-sm;
   }
 
   &__feature-desc {
     font-size: $font-size-base;
-    color: $color-text-light;
+    color: var(--color-text-light);
   }
 }
