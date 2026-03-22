@@ -115,7 +115,8 @@
           </div>
 
           <p v-if="submitStatus === 'success'" class="page-contact__success" role="status">
-            お問い合わせを受け付けました。担当者よりご連絡がいきますので、しばらくお待ちください。
+            お問い合わせを受け付けました。担当者よりご連絡いたしますので、しばらくお待ちください。<br>
+            <small>※ こちらはデモサイトのため、実際の送信は行われません。</small>
           </p>
           <p v-if="submitStatus === 'error'" class="page-contact__submit-error" role="alert">
             送信に失敗しました。時間をおいて再度お試しいただくか、お電話でお問い合わせください。
@@ -249,8 +250,19 @@ async function handleSubmit() {
 
   isSubmitting.value = true;
   try {
-    // モックAPI応答（実際のAPI接続時に差し替え）
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // デモ用: フォームデータをコンソールに出力し、送信をシミュレーション
+    // 本番環境ではここを実際のAPIエンドポイントに差し替え
+    const payload = {
+      company: form.company,
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      category: form.category,
+      message: form.message,
+      submittedAt: new Date().toISOString(),
+    };
+    console.warn('[Contact Form] 送信データ:', JSON.stringify(payload, null, 2));
+    await new Promise((resolve) => setTimeout(resolve, 800));
     submitStatus.value = 'success';
     resetForm();
   } catch {
