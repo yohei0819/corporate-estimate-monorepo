@@ -19,13 +19,13 @@
 
 - **パッケージ管理:** npm workspaces
 - **スタイル:** SCSS + BEM + CSS Custom Properties（モバイルファーストレスポンシブ）
-- **ダークモード:** `prefers-color-scheme: dark` 対応（CSS Custom Properties 切り替え）
+- **ダークモード:** `prefers-color-scheme: dark` 自動検知 + 手動トグル切替（CSS Custom Properties / localStorage 永続化）
 - **Lint / Format:** ESLint 9 (flat config) + Prettier
-- **テスト:** Vitest（33 テスト / 4 ファイル）
-- **CI:** GitHub Actions（push / PR 時に Lint・テスト・ビルド）
+- **テスト:** Vitest（91 テスト / 10 ファイル）+ Playwright E2E
+- **CI:** GitHub Actions（push / PR 時に Lint・型チェック・テスト・ビルド）
 - **静的ホスティング:** GitHub Pages（SSG）
 - **SEO:** サイトマップ・robots.txt・JSON-LD 構造化データ・OGP メタタグ
-- **アクセシビリティ:** WAI-ARIA 属性・セマンティック HTML・キーボードナビゲーション
+- **アクセシビリティ:** WCAG AAA（7:1 コントラスト比）・WAI-ARIA 属性・セマンティック HTML・キーボードナビゲーション
 - **アナリティクス:** Google Analytics 4（環境変数で ON/OFF）
 
 ## 機能一覧
@@ -56,22 +56,26 @@
 
 ### ダークモード
 
-- `@media (prefers-color-scheme: dark)` によるシステム設定連動
+- `@media (prefers-color-scheme: dark)` によるシステム設定自動検知
+- ヘッダーの手動トグルボタンで切替（`data-theme` 属性 + localStorage 永続化）
 - CSS Custom Properties で13色 + 3シャドウ変数を切り替え
-- 両アプリで統一されたカラーパレット（Google Material Dark 準拠）
+- WCAG AAA 準拠のカラーパレット（ライト・ダーク両モードで 7:1 以上のコントラスト比）
+- 両アプリで統一されたカラーパレット
 
 ### アクセシビリティ
 
+- WCAG AAA 準拠（全カラーコンビネーションで 7:1 以上のコントラスト比）
 - `aria-live="polite"` によるトースト通知の読み上げ
 - フォーム要素の `aria-invalid` / `aria-describedby`
 - `role="status"` / `role="alert"` の適切な使用
 - `:focus-visible` によるキーボードフォーカスインジケーター
 - セマンティック HTML・ARIA ラベル
+- ダークモードトグルの `aria-label` 動的切替
 
 ### CI/CD
 
 - GitHub Actions で `main` ブランチへの push / PR 時に自動実行
-- パイプライン: `npm ci` → `build:shared` → `test` → `build:diagnosis-app` → `build:public-site`
+- パイプライン: `npm ci` → `build:shared` → `lint` → `typecheck` → `test` → `build:diagnosis-app` → `build:public-site`
 - Node.js 20 + npm キャッシュ
 
 ## セットアップ
@@ -114,8 +118,9 @@ npm run build:diagnosis-app
 ## テスト・Lint
 
 ```bash
-npm test             # テスト実行
+npm test             # テスト実行（Vitest）
 npm run test:watch   # テスト（ウォッチモード）
+npm run test:e2e     # E2E テスト（Playwright）
 npm run lint         # ESLint
 npm run lint:fix     # ESLint（自動修正）
 npm run format       # Prettier（フォーマット）
@@ -143,7 +148,7 @@ corporate-estimate-monorepo/
 │   └── workflows/ci.yml       # GitHub Actions CI
 ├── apps/
 │   ├── public-site/            # Nuxt 3 コーポレートサイト
-│   │   ├── components/         # Vue コンポーネント（UI 8 + レイアウト 2）
+│   │   ├── components/         # Vue コンポーネント（UI 9 + レイアウト 2）
 │   │   ├── layouts/            # レイアウト
 │   │   ├── pages/              # ページ（9ページ）
 │   │   ├── plugins/            # Nuxt プラグイン（GA4）
@@ -151,7 +156,7 @@ corporate-estimate-monorepo/
 │   └── diagnosis-app/          # Next.js 診断アプリ
 │       └── src/
 │           ├── app/            # App Router ページ（8ページ）
-│           ├── components/     # React コンポーネント（UI 5 + 診断 2 + レイアウト 2）
+│           ├── components/     # React コンポーネント（UI 6 + 診断 2 + レイアウト 2 + GA 1）
 │           ├── lib/            # URL 共有・ストレージユーティリティ
 │           └── styles/         # SCSS 変数・ミックスイン・ダークモード
 ├── packages/
