@@ -112,11 +112,6 @@ export default function LoginPage() {
         </form>
 
         <div className={styles['login__footer']}>
-          {process.env.NODE_ENV === 'development' && (
-            <p className={styles['login__footer-text']}>
-              デモアカウント：demo@example.com / password123
-            </p>
-          )}
           <p className={styles['login__footer-text']}>
             アカウントをお持ちでない方は
             <Link href="/diagnosis" className={styles['login__footer-link']}>

@@ -26,7 +26,9 @@ export default function MyPage() {
     }
     try {
       setUser(JSON.parse(authStr) as AuthUser);
-    } catch {
+    } catch (err) {
+      console.error('認証情報の読み込みに失敗しました:', err);
+      localStorage.removeItem(STORAGE_KEYS.auth);
       router.replace('/login');
       return;
     }
@@ -36,7 +38,8 @@ export default function MyPage() {
       if (historyStr) {
         setResults(JSON.parse(historyStr) as HistoryEntry[]);
       }
-    } catch {
+    } catch (err) {
+      console.error('診断履歴の読み込みに失敗しました:', err);
       setResults([]);
     } finally {
       setIsLoading(false);
