@@ -27,11 +27,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Type check (shared)
-        run: npx tsc --noEmit -p packages/shared/tsconfig.json
-
-      - name: Type check (diagnosis-app)
-        run: npx tsc --noEmit -p apps/diagnosis-app/tsconfig.json
+      - name: Type check
+        run: npm run typecheck
 
       - name: Run tests
         run: npm run test

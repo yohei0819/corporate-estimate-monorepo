@@ -8,7 +8,10 @@ import styles from './layout.module.scss';
 import './globals.scss';
 
 export const metadata: Metadata = {
-  title: 'Corporate Estimate - Diagnosis',
+  title: {
+    default: 'Corporate Estimate - Diagnosis',
+    template: '%s | Corporate Estimate',
+  },
   description: '法人見積もり診断アプリ',
   robots: { index: false, follow: false },
   openGraph: {

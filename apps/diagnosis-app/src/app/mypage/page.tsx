@@ -24,14 +24,18 @@ export default function MyPage() {
       router.replace('/login');
       return;
     }
+
+    let parsedUser: AuthUser;
     try {
-      setUser(JSON.parse(authStr) as AuthUser);
+      parsedUser = JSON.parse(authStr) as AuthUser;
     } catch (err) {
       console.error('認証情報の読み込みに失敗しました:', err);
       localStorage.removeItem(STORAGE_KEYS.auth);
       router.replace('/login');
       return;
     }
+
+    setUser(parsedUser);
 
     try {
       const historyStr = localStorage.getItem(STORAGE_KEYS.diagnosisHistory);
@@ -41,9 +45,9 @@ export default function MyPage() {
     } catch (err) {
       console.error('診断履歴の読み込みに失敗しました:', err);
       setResults([]);
-    } finally {
-      setIsLoading(false);
     }
+
+    setIsLoading(false);
   }, [router]);
 
   if (isLoading) {

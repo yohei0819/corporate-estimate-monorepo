@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import styles from './page.module.scss';
 
 export const metadata: Metadata = {
-  title: 'プラン比較 | Corporate Estimate',
+  title: 'プラン比較',
   description: 'Web制作プランの料金・機能・サポート内容を一覧で比較できます。',
 };
 

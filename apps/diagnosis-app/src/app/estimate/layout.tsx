@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '見積もり明細 | Corporate Estimate',
+  title: '見積もり明細',
   description: '選択したプランとオプションの詳細な見積もり金額をご確認いただけます。',
 };
 
