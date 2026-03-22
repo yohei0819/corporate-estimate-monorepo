@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/Card';
 import styles from './page.module.scss';
 
 export const metadata: Metadata = {
-  title: 'Web制作プラン診断',
+  title: 'Web制作プラン診断 | Corporate Estimate',
   description: '簡単な質問に答えるだけで、最適なWeb制作プランを無料で診断。予算・目的に合ったプランをご提案します。',
 };
 
