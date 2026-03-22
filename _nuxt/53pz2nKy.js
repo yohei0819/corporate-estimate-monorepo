@@ -1,0 +1,1 @@
+const s={it:"IT導入",security:"セキュリティ",cost:"コスト最適化",consulting:"コンサルティング"},c={general:"一般的なご質問",service:"サービスについて",pricing:"料金・お見積もりについて",support:"サポートについて"},e=["general","service","pricing","support"];export{e as F,s as W,c as a};
